@@ -29,6 +29,9 @@ window.onload = function(e) {
 	socket.on('showgame', function()
 	{
 		document.getElementById('player-only').remove();
+		document.querySelectorAll('.delete-me').forEach(element => {
+			element.remove();
+		})
 		console.log("Showgame");
 		document.getElementById('after-start').style.display = 'block';
 		document.getElementById('game').style.display = 'block';
@@ -56,8 +59,9 @@ matzah.style.textAlign = 'center';
 bk.draggable = false;
 bk.style.textAlign = 'center';
 bk.style.position = "fixed";
-bk.style.top = '25rem';
+bk.style.top = 0;
 bk.style.left = 0;
+bk.style.bottom = 0
 bk.style.zIndex = 100;
 bk.width = IMAGE_SCALE[0] / 4;
 bk.height = IMAGE_SCALE[1] / 4;
