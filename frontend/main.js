@@ -58,7 +58,7 @@ bk.style.textAlign = 'center';
 bk.style.position = "fixed";
 bk.style.top = '25rem';
 bk.style.left = 0;
-bk.style.zIndex = -5;
+bk.style.zIndex = 100;
 bk.width = IMAGE_SCALE[0] / 4;
 bk.height = IMAGE_SCALE[1] / 4;
 console.log(bk.width)
