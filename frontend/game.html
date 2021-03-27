@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Afikoman.Online</title>
+  <link rel="shortcut icon" type="image/png" href="./matzah-logo.png">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="noindex">
@@ -21,21 +22,23 @@
 <body>
 	<a href="/index.html" class="cornertitle no-wrap"><img src="matzah-logo.png" width="40px" draggable=false>Afikoman.Online</a>
 	  <br>
+    <hr class="paddedhr">
 		<div id="host-only" class="center">
 			<button id="startbutton" class="fancybutton button">EVERYONE IS READY</button>
 		</div>
 		<div id="player-only" class="center">
-			<p>Waiting for host to start...</p>
+			<p class="label">Waiting for host to start...</p>
 		</div>
 		<!-- EVERYTHING AFTER HERE WILL NOT BE VISIBLE BEFORE THE HOST CLICKS START GAME -->
-		<div class="after-start">
+		<div id="after-start" class="after-start">
 			<h1 id="win" class="center title">You're Not Suposed To See 		This</h1>
 			<div id="winBk" class="background"></div>
-			<h3 class="center smalltext">Click on The Delicious Matzah First 	To 	Win!</h3>
+			<h3 class="center smalltext">Click on the Afikoman first to	win!</h3>
 			<div id="game"></div>
 			</script>
 		</div>
     <footer class="center">
+        <hr class="paddedhr">
 				<br>
 	  	  	<hr>
 	  	  	<p>Made by <a class="linelink" 		href="https://jcinc.jonahkc.com">jcinc.jonahkc.com</a>

@@ -19,10 +19,13 @@ app.use(express.static(frontent));
 //})
 
 io.on('connection', (socket, room) => {
+	socket.on('showgame', (rm) => {
+		io.to(rm).emit('showgame');
+	})
 	socket.on('hostbk', (bk, rm) => {
 		console.log("BACKGROUND: " + bk);
 		console.log("ROOM (SERVER): " + rm)
-		io.to(rm).emit('hostbkreceive', bk);
+		io.to(rm).emit('hostbkreceive', bk); // send host bk to all clients
 	});
   socket.on('win', (username, room) => {
     for(var i = 0; i < players.length; i++) {
@@ -47,7 +50,7 @@ io.on('connection', (socket, room) => {
     //  username: usr,
     //  room: rm,
     //}
-		io.to(rm).emit('playerData', isHost);
+		io.to(rm).emit('playerData', isHost, socket.id);
   });
 });
 

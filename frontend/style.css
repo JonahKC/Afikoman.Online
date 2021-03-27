@@ -182,3 +182,9 @@ hr {
   padding: 5px;
   font-size: 1.25rem;
 }
+.paddedhr {
+  background-color:transparent;
+  border-color: transparent;
+	width: 45%;
+	height: 1in;
+}
