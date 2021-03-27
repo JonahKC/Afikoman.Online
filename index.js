@@ -6,24 +6,23 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-function fancyDict(dict) {
-	return "Player: " + dict.username + ", Room: " + dict.room;
-}
-
 const frontent = path.join(__dirname, 'frontend');
 
-var players = [];
+//var players = [];
 var firstInRoom = {};
 var isHost;
 
 app.use(express.static(frontent));
-app.get("/game.html", async function(req, res) {
-    const gameid = req.query.gameid
-    const username = req.query.username
-    res.render("filename", {gameid: gameid, username: username})
-})
+//app.get("/game.html", async function(req, res) {
+//    const gameid = req.query.gameid
+//    const username = req.query.username
+//    res.render("filename", {jgid: jgid, username: username})
+//})
 
-io.on('connection', (socket) => {
+io.on('connection', (socket, room) => {
+	socket.on('hostbk', (bk) => {
+		io.to(room).emit(bk);
+	});
   socket.on('win', (username, room) => {
     for(var i = 0; i < players.length; i++) {
       if(players[i].room = room) {
@@ -40,22 +39,18 @@ io.on('connection', (socket) => {
 				}
 			}
 		*/
-		if(!(rm.toString() in firstInRoom)) {
-			firstInRoom += {
-				rm: {
-					firstPlayer: 0
-				}
-			}
+		if(rm in firstInRoom === false) {
+			firstInRoom[rm] += {firstPlayer: 0}
 			isHost = true
 		} else {
 			isHost = false
 		}
 		console.log(isHost);
 		console.log(usr, rm);
-    players += {
-      username: usr,
-      room: rm,
-    }
+    //players += {
+    //  username: usr,
+    //  room: rm,
+    //}
 		io.to(rm).emit('playerData', isHost);
   });
 });

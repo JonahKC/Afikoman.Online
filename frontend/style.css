@@ -3,7 +3,6 @@
 }
 body {
     background-color: rgb(223, 60, 54);
-    margin-left: 5%
 }
 footer > * {
   left: 0;
@@ -27,9 +26,9 @@ img {
   font-size: .5rem;
 }
 .title {
-    font-family: 'Monoton', cursive !important;
+    font-family: 'Monoton', sans-serif !important;
     font-size: 3rem;
-    font-weight: 200;
+    font-weight: 300;
     color: rgb(20, 20, 20);
 }
 .no-wrap {
@@ -100,7 +99,7 @@ input {
    width: 20rem;
    height: 2rem;
    text-align: center;
-   font-size: 1rem;
+   font-size: 1.25rem;
    border: 1px solid rgb(155, 232, 255);
 }
 button, input {
@@ -177,4 +176,9 @@ hr {
   padding-left:50px;
   padding-right:50px;
   padding-bottom: 25px;
+}
+::placeholder {
+  color: rgb(169, 169, 169);
+  padding: 5px;
+  font-size: 1.25rem;
 }
