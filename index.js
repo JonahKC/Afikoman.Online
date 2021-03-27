@@ -8,7 +8,6 @@ const io = require('socket.io')(http);
 
 const frontent = path.join(__dirname, 'frontend');
 
-//var players = [];
 var firstInRoom = {};
 var isHost;
 
@@ -20,9 +19,10 @@ app.use(express.static(frontent));
 //})
 
 io.on('connection', (socket, room) => {
-	socket.on('hostbk', (bk) => {
-		console.log(bk);
-		io.to(room).emit('hostbkreceive', bk);
+	socket.on('hostbk', (bk, rm) => {
+		console.log("BACKGROUND: " + bk);
+		console.log("ROOM (SERVER): " + rm)
+		io.to(rm).emit('hostbkreceive', bk);
 	});
   socket.on('win', (username, room) => {
     for(var i = 0; i < players.length; i++) {
@@ -33,14 +33,6 @@ io.on('connection', (socket, room) => {
     io.to(room).emit('win', username);
   });
   socket.on('join', (usr, rm) => {
-
-		/*
-			firstInRoom = {
-				(roomnumber) "123456": {
-					firstPlayer: 0/1
-				}
-			}
-		*/
 		if(rm in firstInRoom === false) {
 			firstInRoom[rm] += {firstPlayer: 0}
 			isHost = true
@@ -48,13 +40,13 @@ io.on('connection', (socket, room) => {
 			isHost = false
 		}
 		console.log(isHost);
-		console.log(usr, rm);
+		console.log(usr);
+		console.log("ROOM: " + rm);
 		socket.join(rm);
     //players += {
     //  username: usr,
     //  room: rm,
     //}
-		io.to(rm).emit('plz-do-something');
 		io.to(rm).emit('playerData', isHost);
   });
 });
