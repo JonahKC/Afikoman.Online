@@ -28,10 +28,12 @@ io.on('connection', (socket, room) => {
 		deleteByKey(firstInRoom, room);
 		socket.leave(io.sockets.adapter.sids[socket.id]);
 	});
-	socket.on('resetroom', (username, room) => {
+	socket.on('resetroom', (username, room, isOwner) => {
 		console.log("---------------------------");
 		console.log(`${username} is attempting to play again in room ${room}`)
-		deleteByKey(firstInRoom, room);
+		if(isOwner) {
+			deleteByKey(firstInRoom, room);
+		}
 	})
 	socket.on('showgame', (rm) => {
 		io.to(rm).emit('showgame');

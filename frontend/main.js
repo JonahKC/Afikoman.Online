@@ -91,7 +91,7 @@ document.getElementById("returnHome").onclick = function() {
 }
 
 document.getElementById("playAgain").onclick = function() {
-	socket.emit('resetroom', sessionStorage.getItem('username'), sessionStorage.getItem('jgid'));
+	socket.emit('resetroom', sessionStorage.getItem('username'), sessionStorage.getItem('jgid'), isOwner);
 }
 
 
