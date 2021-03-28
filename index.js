@@ -23,6 +23,7 @@ app.use(express.static(frontent));
 
 io.on('connection', (socket, room) => {
 	socket.on('leaveroom', function(username, room) {
+		console.log("---------------------------");
 		console.log(`${username} is attempting to leave room ${room}`)
 		deleteByKey(firstInRoom, room);
 		socket.leave(io.sockets.adapter.sids[socket.id]);
@@ -32,7 +33,7 @@ io.on('connection', (socket, room) => {
 	})
 	socket.on('hostbk', (bk, rm) => {
 		console.log("BACKGROUND: " + bk);
-		console.log("ROOM (SERVER): " + rm)
+		console.log("ROOM: " + rm)
 		io.to(rm).emit('hostbkreceive', bk);
 	});
   socket.on('win', (username, room) => {
@@ -45,9 +46,12 @@ io.on('connection', (socket, room) => {
 		} else {
 			isHost = false
 		}
-		console.log(isHost);
-		console.log(usr);
+		console.log("---------------------------");
+		console.log("Don't worry if these are null")
+		console.log("IS THIS PLAYER A HOST? " + isHost);
+		console.log("PLAYER'S USERNAME: " + usr);
 		console.log("ROOM: " + rm);
+		console.log("---------------------------");
 		socket.join(rm);
 		io.to(rm).emit('playerData', isHost, socket.id);
   });
@@ -55,5 +59,6 @@ io.on('connection', (socket, room) => {
 
 http.listen(PORT, () => {
   console.log("listening on " + HOST + ":" + PORT);
+	console.log("---------------------------");
 });
 ""

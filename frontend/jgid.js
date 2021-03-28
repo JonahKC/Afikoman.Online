@@ -3,6 +3,13 @@ var join = document.getElementById("join");
 var socket = io();
 room = 0;
 
+window.addEventListener("load", function(){
+  var md = new MobileDetect(window.navigator.userAgent);
+	if(md.mobile() != null) {
+		alert("Hi there! It looks like you're on a mobile device. The game isn't optimized for mobile, so some stuff might be cut off. Switch to a computer for the full experience!");
+	}
+});
+
 //https://stackoverflow.com/questions/469357/html-text-input-allow-only-numeric-input
 function setInputFilter(textbox, inputFilter) {
     ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {

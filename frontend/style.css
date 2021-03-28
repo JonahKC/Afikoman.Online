@@ -206,3 +206,8 @@ hr {
   padding-right:10%;
   padding-bottom: 25px;
 }
+.absolute {
+	position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+}

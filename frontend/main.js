@@ -57,20 +57,20 @@ matzah.setAttribute('class', "invisbutton");
 matzah.style.position = 'fixed';
 matzah.style.textAlign = 'center';
 bk.draggable = false;
-bk.style.textAlign = 'center';
-bk.style.margin = '0 auto';
-bk.style.position = "fixed";
-bk.style.top = 0;
-bk.style.left = '30%';
-bk.style.bottom = 0
+bk.style.position = "absolute";
+bk.style.top = '2in';
+bk.style.left = '1in';
+bk.style.bottom = '1in';
+bk.style.paddingBottom = '1in';
+bk.style.paddingRight = '1in';
 bk.style.zIndex = 100;
 bk.width = IMAGE_SCALE[0] / 4;
 bk.height = IMAGE_SCALE[1] / 4;
-console.log(bk.width)
 matzah.style.display = "block";
 bk.style.display = "block"
 
 socket.on('playerData', function(_isOwner, id) {
+	document.getElementById('id-display').innerText = "ID: " + sessionStorage.getItem('jgid');
 	if(id == socket.id) {
 		isOwner = _isOwner;
 		if(_isOwner) {
@@ -88,8 +88,8 @@ socket.on('hostbkreceive', function(_bk) {
 	bk.src = _bk;
 	matzah.style.width =  (win_button_coords[_bk].width / 4) + 'px';
 	matzah.style.height = (win_button_coords[_bk].height / 4) + 'px';
-	matzah.style.left =  'calc(' + (win_button_coords[_bk].x / 4) + 'px + 30%)';
-	matzah.style.top = (win_button_coords[_bk].y / 4) + 'px';
+	matzah.style.left =  'calc(' + (win_button_coords[_bk].x / 4) + 'px + 1in)';
+	matzah.style.top = 'calc(' + (win_button_coords[_bk].y / 4) + 'px + 2in';
 	matzah.style.display = 'block';
 });
 
